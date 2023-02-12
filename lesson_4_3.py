@@ -2,4 +2,4 @@
 # строку.
 
 print(
-    f"Numbers that are multiples of 20 or 21 in the range from 20 to 240: {[i for i in range(20, 240) if i % 20 == 0 or i % 21 == 0]}")
+    f"Numbers that are multiples of 20 or 21 in the range from 20 to 240: {[i for i in range(20, 241) if i % 20 == 0 or i % 21 == 0]}")
