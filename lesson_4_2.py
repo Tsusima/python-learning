@@ -10,7 +10,6 @@ a = int(input("Enter the number of numbers in the list: "))
 for i in range(a):
     b = int(input("Enter list items: "))
     my_list.append(b)
-new_list = [my_list[i] for i in range(len(my_list)) if int(my_list[i - 1]) < int(my_list[i])]
-new_list.pop(0)
+new_list = [my_list[i + 1] for i in range(len(my_list) - 1) if int(my_list[i]) < int(my_list[i + 1])]
 print(f"Start List: {my_list}")
 print(f"New List: {new_list}")
