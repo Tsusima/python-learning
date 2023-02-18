@@ -3,19 +3,25 @@
 # время выполнения расчёта для конкретных значений необходимо запускать скрипт с
 # параметрами.
 
-from sys import argv
+from itertools import count
+from itertools import cycle
 
-if len(argv) > 1:
-    name_script, time_work, rate_per_hour, bonus = argv
-    time_work = float(time_work)
-    rate_per_hour = float(rate_per_hour)
-    bonus = float(bonus)
-    print((time_work * rate_per_hour) + bonus)
-else:
-    try:
-        time_work = float(input("Enter time work: "))
-        rate_per_hour = float(input("Enter rate per hour: "))
-        bonus = float(input("Enter bonus: "))
-        print(f"salary: {(time_work * rate_per_hour) + bonus}")
-    except ValueError as e:
-        print(e)
+
+def my_count_func(start_number, stop_number):
+    for el in count(start_number):
+        if el > stop_number:
+            break
+        else:
+            yield el
+
+
+def my_cycle_func(my_list, iteration):
+    i = 0
+    iter = cycle(my_list)
+    while i < iteration:
+        yield next(iter)
+        i += 1
+
+
+print(list(my_count_func(start_number=int(input("enter start number: ")), stop_number=int(input("enter stop number: ")))))
+print(list(my_cycle_func(my_list=[123, None, False, [1, 2, True, 23], "str"], iteration=int(input("enter iteration: ")))))
