@@ -16,16 +16,16 @@ def my_count_func(start_number, stop_number):
         if el > stop_number:
             break
         else:
-            print(el)
+            yield el
 
 
 def my_cycle_func(my_list, iteration):
     i = 0
     iter = cycle(my_list)
     while i < iteration:
-        print(next(iter))
+        yield next(iter)
         i += 1
 
 
-my_count_func(start_number=int(input("enter start number: ")), stop_number=int(input("enter stop number: ")))
-my_cycle_func(my_list=[123, None, False, [1, 2, True, 23], "str"], iteration=int(input("enter iteration: ")))
+print(list(my_count_func(start_number=int(input("enter start number: ")), stop_number=int(input("enter stop number: ")))))
+print(list(my_cycle_func(my_list=[123, None, False, [1, 2, True, 23], "str"], iteration=int(input("enter iteration: ")))))
