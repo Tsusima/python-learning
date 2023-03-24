@@ -9,11 +9,12 @@
 # Физкультура: — 30(пр) —
 # Пример словаря: {“Информатика”: 170, “Физика”: 40, “Физкультура”: 30}
 
+import re
 
 subjects = {}
 with open("test_file_5_6.txt", encoding='utf-8') as my_file:
     lines = my_file.readlines()
-for line in lines:
-    data = line.replace('(', ' ').split()
-    subjects[data[0][:-1]] = sum(int(i) for i in data if i.isdigit())
+    for line in lines:
+        data = re.findall(r'\d+', line)
+        subjects[line.split()[0][:-1]] = sum(map(int, data))
 print(subjects)
