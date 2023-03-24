@@ -1,18 +1,16 @@
 # 5) Создать (программно) текстовый файл, записать в него программно набор чисел, разделённых
 # пробелами. Программа должна подсчитывать сумму чисел в файле и выводить её на экран.
+import random
 
 
 def summary():
-    try:
-        with open("test_file_5_5.txt", "w+") as my_file:
-            line = input("Enter data separated by a space: ")
-            my_file.writelines(line)
-            my_numb = line.split()
-            print(f"The sum of the numbers in the file: {sum(map(int, my_numb))}")
-    except IOError:
-        print("File error")
-    except ValueError:
-        print("Number dialed incorrectly. I/O error")
+    with open("test_file_5_5.txt", "w") as my_file:
+        for i in range(10):
+            number = random.randint(1, 100)
+            my_file.write(str(number) + ' ')
+    with open("test_file_5_5.txt", "r") as my_file:
+        sum_numbers = my_file.read().split()
+        print(f"The sum of the numbers in the file: {sum(map(int, sum_numbers))}")
 
 
 summary()
