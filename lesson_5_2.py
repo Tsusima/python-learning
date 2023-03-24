@@ -2,14 +2,15 @@
 # подсчёт строк и слов в каждой строке.
 
 
-my_file = open("test_file_5_2.txt", "r")
-print(f"Content files:\n{my_file.read()}")
-my_file = open("test_file_5_2.txt", "r")
-print(f"Number of lines in file: {len(my_file.readlines())}")
-my_file = open("test_file_5_2.txt", "r")
-content = my_file.readlines()
-for i in range(len(content)):
-    print(f"Number of characters in the {i + 1} line {len(content[i])}")
-my_file = open("test_file_5_2.txt", "r")
-print(f"Total words: {len(my_file.read().split())}")
-my_file.close()
+def my_func():
+    with open("test_file_5_2.txt", "r") as my_file:
+        content = my_file.readlines()
+        print(f"Content files:\n{''.join(content)}")
+        print("Number of lines:", len(content))
+        for i in range(len(content)):
+            print(f"Number of characters in the {i + 1} line: {len(content[i])}")
+        my_file.seek(0)
+        print(f"Total words: {len(my_file.read().split())}")
+
+
+my_func()
