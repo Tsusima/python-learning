@@ -2,16 +2,13 @@
 # вводимые пользователем. Об окончании ввода данных будет свидетельствовать пустая
 # строка.
 
+def my_func():
+    with open("test.txt", "w",   encoding='utf-8') as my_file:
+        while True:
+            line = input("Enter text, if you dont want to enter anything else press Enter: ")
+            my_file.writelines(line + '\n')
+            if not line:
+                break
 
-my_file = open("test.txt", "w")
-line = input("Enter text, if you dont want to enter anything else press Enter: ")
-while line:
-    my_file.writelines(line)
-    line = input("Enter text, if you dont want to enter anything else press Enter: ")
-    if not line:
-        break
 
-my_file.close()
-with open("test.txt", "r") as my_file:
-    print(my_file.readlines())
-
+my_func()
