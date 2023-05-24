@@ -24,13 +24,13 @@ class Car:
         self.is_police = is_police
 
     def go(self):
-        return print(f"{self.color} {self.name} started moving")
+        print(f"{self.color} {self.name} started moving")
 
     def stop(self):
-        return print(f"{self.color} {self.name} stopped")
+        print(f"{self.color} {self.name} stopped")
 
     def turn(self, direction):
-        return print(f"{self.color} {self.name} turned {direction}")
+        print(f"{self.color} {self.name} turned {direction}")
 
 
 class TownCar(Car):
