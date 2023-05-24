@@ -6,32 +6,72 @@
 # метод должен выводить уникальное сообщение;
 # ● создать экземпляры классов и проверить, что выведет описанный метод для каждого
 # экземпляра.
-
-class Stationery:
-    atr_title = 'Title'
+class Stationary:
+    def __init__(self, title):
+        self.title = title
 
     def draw(self):
-        print('Запуск отрисовки')
+        return f'Запуск отрисовки {self.title}'
 
 
-class Pen(Stationery):
+class Pen(Stationary):
+    def __init__(self, title):
+        super().__init__(title)
+
     def draw(self):
-        print('Отрисовка ручкой')
+        print(f'Вы взяли {self.title}. Запуск отрисовки ручкой')
 
 
-class Pencil(Stationery):
+class Pencil(Stationary):
+    def __init__(self, title):
+        super().__init__(title)
+
     def draw(self):
-        print('Отрисовка карандашом')
+        print(f'Вы взяли {self.title}. Запуск отрисовки карандашом')
 
 
-class Handle(Stationery):
+class Handle(Stationary):
+    def __init__(self, title):
+        super().__init__(title)
+
     def draw(self):
-        print('Отрисовка маркером')
+        print(f'Вы взяли {self.title}. Запуск отрисовки маркером')
+
 
 if __name__ == "__main__":
-    my_pen = Pen()
-    my_pencil = Pencil()
-    my_handle = Handle()
+    my_pen = Pen('Ручку')
+    my_pencil = Pencil('Каранаш')
+    my_handle = Handle('Маркер')
     my_pen.draw()
     my_pencil.draw()
     my_handle.draw()
+    
+ 
+# class Stationery:
+#     atr_title = 'Title'
+
+#     def draw(self):
+#         print('Запуск отрисовки')
+
+
+# class Pen(Stationery):
+#     def draw(self):
+#         print('Отрисовка ручкой')
+
+
+# class Pencil(Stationery):
+#     def draw(self):
+#         print('Отрисовка карандашом')
+
+
+# class Handle(Stationery):
+#     def draw(self):
+#         print('Отрисовка маркером')
+
+# if __name__ == "__main__":
+#     my_pen = Pen()
+#     my_pencil = Pencil()
+#     my_handle = Handle()
+#     my_pen.draw()
+#     my_pencil.draw()
+#     my_handle.draw()
