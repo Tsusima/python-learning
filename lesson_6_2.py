@@ -24,7 +24,7 @@ if __name__ == '__main__':
         print(f'Need {rd.mass_calculation()} ton for the building')
     except ValueError as e:
         print(e)
-
+# Старая версия
 # class Road:
 #     def __init__(self, length, width):
 #         self.length = length
