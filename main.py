@@ -1,7 +1,6 @@
 import json
 # import pickle
 
-
 class OfficeEquipment:
     def __init__(self, name, color, price):
         self.name = name
