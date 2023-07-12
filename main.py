@@ -1,9 +1,5 @@
-# Функции созранения и загрузки файла у меня получилось реализовать только с помощью модуля pickle
-# Искал в интернете другие способы но полуичлось только так
-
-
 import json
-import pickle
+# import pickle
 
 
 class OfficeEquipment:
@@ -77,22 +73,36 @@ class Warehouse:
         if "special_characteristics" in item:
             return Equipment(item["name"], item["color"], item["price"], item["special_characteristics"])
         return item
+    def save_to_file(self, filename):
+        data = {"stock": self.stock, "departments": self.departments}
+        with open(filename, "w") as file:
+            json.dump(data, file, default=self.serialize_item)
+        print(f"Данные склада сохраён в файл json {filename}")
 
     def load_from_file(self, filename):
         try:
-            with open(filename, "rb") as file:
-                data = pickle.load(file)
+            with open(filename, "r") as file:
+                data = json.load(file, object_hook=self.deserialize_item)
                 self.stock = data["stock"]
                 self.departments = data["departments"]
-                print(f"Данные склада загружены из файла {filename}")
+                print(f"Данные склада загружены из файла json {filename}")
         except FileNotFoundError:
             print(f"Файл {filename} не найден")
-
-    def save_to_file(self, filename):
-        data = {"stock": self.stock, "departments": self.departments}
-        with open(filename, "wb") as file:
-            pickle.dump(data, file)
-        print(f"Данные склада сохраён в файл {filename}")
+    # def load_from_file(self, filename):
+    #     try:
+    #         with open(filename, "rb") as file:
+    #             data = pickle.load(file)
+    #             self.stock = data["stock"]
+    #             self.departments = data["departments"]
+    #             print(f"Данные склада загружены из файла {filename}")
+    #     except FileNotFoundError:
+    #         print(f"Файл {filename} не найден")
+    #
+    # def save_to_file(self, filename):
+    #     data = {"stock": self.stock, "departments": self.departments}
+    #     with open(filename, "wb") as file:
+    #         pickle.dump(data, file)
+    #     print(f"Данные склада сохраён в файл {filename}")
 
     def export_to_json(self, filename):
         data = {"stock": self.stock, "departments": self.departments}
